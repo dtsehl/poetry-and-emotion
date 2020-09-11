@@ -8,7 +8,15 @@ describe 'User can search for poet' do
     click_on 'Get Poems'
     expect(current_path).to eq(search_path)
 
-    poem = Poem.first
+    #I was just wrapping up this feature test, having made all other tests pass.
+
+      info = {
+          title: "Not at Home to Callers",
+          author: "An Author",
+          lines: ["Line 1", "Line 2", "Line 3"]
+        }
+
+    poem = Poem.new(info)
     within ".poem-#{poem.id}" do
       expect(page).to have_content("Poem Title: #{poem.title}")
       expect(page).to have_content("Poem Author: #{poem.author}")
